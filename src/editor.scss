@@ -1,0 +1,71 @@
+/**
+ * The following styles get applied inside the editor only.
+ */
+.codeMirror-editor {
+	.CodeMirror {
+		transition: .3s all ease-in;
+	}
+	.CodeMirror-panel {
+		.hide-panel {
+			height: 0
+		}
+	}
+
+	/* twentyfifteen theme hack */
+	.CodeMirror {
+		font-size: .8em;
+		height: auto;
+
+		pre.CodeMirror-line {
+			border: inherit;
+		}
+	}
+
+	/* twentyseventeen theme hack */
+	.CodeMirror {
+		pre.CodeMirror-line {
+			background: inherit;
+			font-family: inherit;
+			font-size: inherit;
+			line-height: inherit;
+			margin: inherit;
+			max-width: 100%;
+			overflow: inherit;
+			padding: inherit;
+			padding-left: .5em;
+		}
+	}
+
+	.CodeMirror {
+		&.CodeMirror-panel {
+			/* background-color: rgba(0, 0, 0, .1); */
+			border-bottom-left-radius: 0 !important;
+			border-bottom-right-radius: 0 !important;
+			box-shadow: none;
+		}
+	}
+}
+
+// it just for block preview
+.block-editor-block-preview__content-iframe {
+	.CodeMirror {
+		&.cm-s-material {
+			background-color: #263238;
+			color: rgba(233, 237, 237, 1);
+
+			.CodeMirror-gutters {
+				display: none;
+			}
+		}
+		.CodeMirror-simplescroll-horizontal,
+		.CodeMirror-simplescroll-vertical {
+			display: none !important;
+		}
+	}
+
+	.CodeMirror-panel {
+		.hide-panel {
+			display: none;
+		}
+	}
+}

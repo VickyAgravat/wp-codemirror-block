@@ -1,0 +1,700 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ */
+
+/*
+ * Code Blocks
+ */
+.code-block {
+	margin-bottom: 1.5rem;
+	position: relative;
+
+	/* for non highlighted pre codemirror block */
+	pre.CodeMirror {
+		line-height: 28px;
+		padding: 0px 10px;
+		margin: 0;
+		margin-bottom: 10px;
+		border: 1px solid #ddd;
+		background: #f2f2f2;
+		background: -moz-linear-gradient(top, #f2f2f2 50%, #f9f9f9 50%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #f2f2f2), color-stop(50%, #f9f9f9));
+		background: -webkit-linear-gradient(top, #f2f2f2 50%, #f9f9f9 50%);
+		background: -o-linear-gradient(top, #f2f2f2 50%, #f9f9f9 50%);
+		background: -ms-linear-gradient(top, #f2f2f2 50%, #f9f9f9 50%);
+		background: linear-gradient(to bottom, #f2f2f2 50%, #f9f9f9 50%);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f2f2f2', endColorstr='#f9f9f9', GradientType=0);
+		background-size: 56px 56px;
+		white-space: pre-wrap;
+		white-space: -moz-pre-wrap;
+		white-space: -pre-wrap;
+		white-space: -o-pre-wrap;
+		word-wrap: break-word;
+		font-size: 16px;
+		font-family: monospace;
+	}
+
+	.CodeMirror-fullscreen {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		height: auto;
+		z-index: 5000;
+		margin-bottom: 0;
+    padding-bottom: 30px;
+	}
+
+	/* Output block-size: */
+	iframe {
+		&.output-block-frame {
+			display: none;
+			width: 100%;
+			margin: 1em 0;
+			-webkit-box-shadow: 0px 0px 10px 0px rgba(68, 68, 68, 1);
+			-moz-box-shadow: 0px 0px 10px 0px rgba(68, 68, 68, 1);
+			box-shadow: 0px 0px 10px 0px rgba(68, 68, 68, 1);
+			background-color: #fff;
+			transition: .3s all ease-in;
+		}
+
+		&.show {
+			display: block;
+		}
+	}
+}
+
+textarea.CodeMirror-ClipBoard {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	opacity: 0;
+	border: 0;
+	padding: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.CodeMirror-notice {
+	position: fixed;
+	left: 15px;
+	background: #000;
+	color: #fff;
+	padding: 10px;
+	border-radius: 5px;
+	bottom: -40px;
+	z-index: 5001;
+	font-size: 12px;
+	transition: .5s all;
+}
+
+// It will adjust top admin bar
+// .adjust-top {
+// 	top: 32px !important;
+// }
+
+.CodeMirror {
+
+	svg.loader {
+		position: absolute;
+		top: 42%;
+		left: 42%;
+		max-width: 64px;
+		border-radius: 3px;
+		/* box-shadow: 2px 2px 5px #000; */
+		background: rgba(30, 30, 30, .7);
+		fill: none;
+		stroke: #222;
+		stroke-linecap: round;
+		stroke-width: 8%;
+	}
+
+	use {
+		stroke: #fff;
+		animation: a 2s linear infinite
+	}
+
+	@keyframes a {
+		to {
+			stroke-dashoffset: 0px
+		}
+	}
+
+	&.has-panel {
+		border-top-left-radius: 0 !important;
+		border-top-right-radius: 0 !important;
+	}
+	/* .CodeMirror.CodeMirror-panel {
+  background-color: rgba(0, 0, 0, .1);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+} */
+}
+
+.CodeMirror-panel {
+	.max-height {
+		margin-right: .5rem
+	}
+
+	.info-panel {
+		display: flex;
+		justify-content: space-between;
+		/* background-color: red; */
+		height: 32px;
+		transition: .4s all ease-in;
+
+		.language {
+			display: inline-block;
+			padding: 4px 32px;
+			font-size: 16px;
+			background: #4C607F;
+			font-weight: 500;
+			color: #fff;
+			transition: .4s "background" ease-out;
+
+			&.apl {
+				color: #000;
+				background: #d2d2d2;
+			}
+
+			&.asp {
+				background: #0088b6;
+			}
+
+			&.aspx {
+				background: #33a9dc;
+			}
+
+			&.c {
+				background: #005f91;
+			}
+
+			&.cpp {
+				background: #984c93;
+			}
+
+			&.cobol {
+				background: #005ca5;
+			}
+
+			&.coffeescript {
+				background: #6f4e37;
+			}
+
+			&.clojure {
+				/* color: #63b132; */
+				background: #5881d8;
+			}
+
+			&.css {
+				/* color: #33a9dc; */
+				background: #1572b6;
+			}
+
+			&.csharp {
+				background: #368832;
+			}
+
+			&.diff {
+				/* color: #c00000; */
+				background: #008000;
+			}
+
+			&.django {
+				background: #44b78b;
+			}
+
+			&.docker {
+				background: #27b9ec;
+			}
+
+			&.dylan {
+				/* color: #41a5ae; */
+				background-image: linear-gradient(to bottom right, #fd1a60, #f36420);
+			}
+
+			&.elm {
+				/* color: #eea400; */
+				background: #5fb4cb;
+			}
+
+			&.erlang {
+				background: #a2003e;
+			}
+
+			&.fortran {
+				/* color: #378bba; */
+				background: #30b9db;
+			}
+
+			&.fsharp {
+				/* color: #d6534f; */
+				background: #665948;
+			}
+
+			&.git {
+				/* color: #e24329; */
+				background: #fca326;
+			}
+
+			&.go {
+				background: #00acd7;
+			}
+
+			&.groovy {
+				/* color: #333; */
+				background: #6398aa;
+			}
+
+			&.haml {
+				color: #3f3e29;
+				background: #ecdfa7;
+			}
+
+			&.haskell {
+				/* color: #453a62; */
+				background: #8f4e8b;
+			}
+
+			&.html,
+			&.htmlmixed,
+			&.htmlembedded {
+				background: #f1662a;
+			}
+
+			&.http {
+				/* color: #3b61a6; */
+				background: #509e2f
+			}
+
+			&.java {
+				background: #5382a1
+			}
+
+			&.js {
+				background: #f5de19
+			}
+
+			&.json {
+				background: #f5de19
+			}
+
+			&.jsx {
+				background: #f5de19
+			}
+
+			&.jsonld {
+				/* color: #0c479c; */
+				background: #0ca69c
+			}
+
+			&.jsp {
+				background: #e56f14
+			}
+
+			&.kotlin {
+				/* color: #0296d8; */
+				background-image: linear-gradient(to bottom right, #cb55c0, #f28e0e);
+			}
+
+			&.less {
+				background: #193255;
+			}
+
+			&.lisp {
+				background: #c40804;
+			}
+
+			&.livescript {
+				background: #317eac;
+			}
+
+			&.lua {
+				background: #000080;
+			}
+
+			&.markdown {
+				background: #755838;
+			}
+
+			&.mariadb {
+				color: #002b64;
+				background: #c49a6c
+			}
+
+			&.mssql,
+			&.mysql {
+				background: #5d87a1;
+			}
+
+			&.nginx {
+				background: #019639;
+			}
+
+			&.objectivec {
+				background: #c2c2c2;
+			}
+
+			&.perl {
+				background: #3a3c5b;
+			}
+
+			&.php {
+				background: #6280b6;
+			}
+
+			&.plsql {
+				background: #f00
+			}
+
+			&.powershell {
+				background: #5290fd
+			}
+
+			&.protobuf {
+				background: #ff5c77
+			}
+
+			&.pug {
+				color: #442823;
+				background: #efcca3
+			}
+
+			&.puppet {
+				background: #ffae1a
+			}
+
+			&.python {
+				color: #366e9d;
+				background: #ffdc4e
+			}
+
+			&.q {
+				background: #1e78b3
+			}
+
+			&.r {
+				color: #185ead;
+				background: #acadb2
+			}
+
+			&.ruby {
+				background: #e71622;
+			}
+
+			&.rust {
+				/* color: #7e7d7c; */
+				background: #a04f12
+			}
+
+			&.scala {
+				background: #fe0000;
+			}
+
+			&.stylus {
+				background: #FF2952;
+			}
+
+			&.sass,
+			&.scss {
+				background: #cd6799;
+			}
+
+			&.shell {
+				background: #d9b400
+			}
+
+			&.sql {
+				background: #ffda44
+			}
+
+			&.sqlite {
+				/* color: #502d16; */
+				background: #003b57
+			}
+
+			&.squirrel {
+				/* color: #502d16; */
+				background: #a05a2c
+			}
+
+			&.stylus {
+				background: #c2c2c2;
+			}
+
+			&.swift {
+				background: #fd2822;
+			}
+
+			&.tcl {
+				/* color: #eff1cb; */
+				background: #c3b15f
+			}
+
+			&.text {
+				/* color: #c2c2c2; */
+				background: #829ec2
+			}
+
+			&.textile {
+				color: #000;
+				background: #ffe7ac
+			}
+
+			&.toml {
+				/* color: #bfbfbf; */
+				background: #7f7f7f
+			}
+
+			&.ttcn {
+				/* color: #949494; */
+				background: #00adee
+			}
+
+			&.twig {
+				/* color: #63bf6a; */
+				background: #78dc50
+			}
+
+			&.typescript {
+				background: #007acc;
+			}
+
+			&.vb {
+				background: #00519a;
+			}
+
+			&.velocity {
+				/* color: #000; */
+				background: #262692;
+			}
+
+			&.verilog {
+				/* color: #c5c2ff; */
+				background: #1a348f;
+			}
+
+			&.vhdl {
+				background: #0d9b35;
+			}
+
+			&.vue {
+				/* color: #35495e; */
+				background: #41b883;
+			}
+
+			&.xml {
+				background: #f1662a;
+			}
+
+			&.xquery {
+				/* color: #fcba00; */
+				background: #f1662a;
+			}
+
+			&.yaml {
+				background: #fbc02d;
+			}
+
+		}
+	}
+
+	.control-panel {
+		padding: 5px 3px;
+		/* background-color:blue; */
+		display: flex;
+
+		&>span {
+			display: flex;
+			margin: 0 5px 0 0;
+			cursor: pointer;
+			transition: .3s all;
+		}
+
+		&>span:hover {
+			color: #fff;
+		}
+
+		/* Button Icons */
+		.run-code {
+			box-sizing: border-box;
+			position: relative;
+			display: inline-block;
+			transform: scale(1);
+			width: 20px;
+			height: 20px;
+			border: 2px solid;
+			border-radius: 20px;
+
+			&::after,
+			&::before {
+				content: "";
+				display: block;
+				box-sizing: border-box;
+				position: absolute;
+				/* height: 8px; */
+				top: 3px
+			}
+
+			&::after {
+				width: 0;
+				border-top: 5px solid transparent;
+				border-bottom: 5px solid transparent;
+				border-left: 9px solid;
+				left: 5px
+			}
+		}
+
+		.maximize,
+		.restore {
+			box-sizing: border-box;
+			position: relative;
+			display: inline-block;
+			transform: scale(1);
+			width: 20px;
+			height: 20px;
+			border: 2px solid;
+			border-radius: 2px
+		}
+
+		.maximize::after {
+			content: "";
+			display: inline-block;
+			box-sizing: border-box;
+			position: absolute;
+			width: 12px;
+			height: 12px;
+			background: currentColor;
+			left: 2px;
+			top: 2px;
+		}
+
+		.restore::after {
+			content: "";
+			display: inline-block;
+			box-sizing: border-box;
+			position: absolute;
+			width: 9px;
+			height: 3px;
+			background: currentColor;
+			left: 2px;
+			bottom: 3px;
+		}
+
+		/* .restore::after {
+  content: "";
+  display: inline-block;
+  box-sizing: border-box;
+  position: absolute;
+  width: 12px;
+  height: 8px;
+  background: currentColor;
+  left: 3px;
+  top: 2px;
+} */
+
+		.copy {
+			box-sizing: border-box;
+			position: relative;
+			display: inline-block;
+			transform: scale(1);
+			width: 14px;
+			height: 18px;
+			border: 2px solid;
+			border-radius: 2px;
+			border-right: 0;
+			border-bottom: 0;
+
+			&::after {
+				content: "";
+				display: inline-block;
+				box-sizing: border-box;
+				position: absolute;
+				width: 13px;
+				height: 17px;
+				/* background: currentColor; */
+				border: 2px solid;
+				left: 1px;
+				top: 1px;
+				border-radius: 0 0 2px 0;
+			}
+		}
+
+		/*== start of code for tooltips ==*/
+		.tool {
+			cursor: help;
+			position: relative;
+
+			/*== common styles for both parts of tool tip ==*/
+			&::before,
+			&::after {
+				left: 50%;
+				opacity: 0;
+				position: absolute;
+				z-index: -100;
+			}
+
+			&:hover::after,
+			&:focus::after {
+				opacity: 1;
+				transform: scale(1) translateY(0);
+				z-index: 100;
+			}
+
+			&:hover::before,
+			&:focus::before {
+				opacity: 1;
+				transform: scale(1) translateY(0);
+				z-index: 100;
+			}
+
+			/*== pointer tip ==*/
+			&::before {
+				border-style: solid;
+				border-width: 8px 12px 12px 8px;
+				border-color: transparent transparent #3E474F transparent;
+				top: 100%;
+				left: 0;
+				content: "";
+				transition: all .85s cubic-bezier(.84, -0.18, .31, 1.26), opacity .85s .5s;
+				transform: scale(.6) translateY(-20%);
+			}
+
+			// &:hover::before,
+			// &:focus::before {
+			// 	transition: all .85s cubic-bezier(.84, -0.18, .31, 1.26) .2s;
+			// }
+
+			/*== speech bubble ==*/
+			&::after {
+				background: #3E474F;
+				border-radius: 5px;
+				top: 180%;
+				color: #EDEFF0;
+				content: attr(data-tip);
+				padding: 5px;
+				transition: all .85s cubic-bezier(.84, -0.18, .31, 1.26) .2s;
+				// transform: scale(.8) translateY(-180%);
+				text-align: center;
+				width: 120px;
+				left: -90px;
+				font-size: 14px;
+			}
+
+			// &:hover::after,
+			// &:focus::after {
+			// 	transition: all .55s cubic-bezier(.84, -0.18, .31, 1.26);
+			// }
+		}
+	}
+
+	// @media (max-width: 760px) {
+	// 	.tool::after {
+	// 		font-size: .75em;
+	// 		width: 10em;
+	// 		left: -8em;
+	// 	}
+	// }
+}

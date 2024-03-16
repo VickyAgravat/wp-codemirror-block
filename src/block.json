@@ -1,0 +1,66 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "codemirror-blocks/code-block",
+	"version": "2.0.0",
+	"title": "Codemirror Block",
+	"category": "codemirror-blocks",
+	"icon": "media-code",
+	"description": "CodeMirror Block, It gives you more flexibility to Display formatted Program Code.",
+	"example": {
+		"attributes": {
+			"content": "Hello world!",
+			"theme": "material"
+		}
+	},
+	"attributes": {
+		"showPanel": {
+			"type": "boolean"
+		},
+		"languageLabel": {
+			"type": "string"
+		},
+		"fileName": {
+			"type": "string",
+			"default": ""
+		},
+		"mode": {
+			"type": "string"
+		},
+		"mime": {
+			"type": "string"
+		},
+		"lineNumbers": {
+			"type": "boolean"
+		},
+		"firstLineNumber": {
+			"type": "string"
+		},
+		"lineWrapping": {
+			"type": "boolean"
+		},
+		"readOnly": {
+			"type": "boolean"
+		},
+		"styleActiveLine": {
+			"type": "boolean"
+		},
+		"disableCopy": {
+			"type": "boolean"
+		},
+		"theme": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"keywords": [ "code", "codemirror CodeMirror", "gutenberg code block" ],
+	"textdomain": "wp-codemirror-block",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"script": "file:./autoload.js",
+	"viewScript": "file:./view.js"
+}
