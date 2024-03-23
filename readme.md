@@ -112,13 +112,13 @@ Manually via FTP access:
 
 **Frequently Asked Questions**
 
-Q. It Supports Classic Editor?
+#### Q. It Supports Classic Editor?
 Yes, Now it supports classic editor. So, works with tinyMCE editor. But it not support live syntax highlighting.
 
-Q. It is Run without Gutenberg?
+#### Q. It is Run without Gutenberg?
 Yes, But if you want get live syntax highlighting, you have to install and activate Gutenberg, or Update your WordPress to latest version with built-in Block Editor.
 
-Q. How to insert Code Block in Post?
+#### Q. How to insert Code Block in Post?
 A. Adding `Code Block` is same as inserting other Blocks.
 
 1. Log in to Admin Area of your WordPress website.
@@ -127,24 +127,24 @@ A. Adding `Code Block` is same as inserting other Blocks.
 4. Find or Search `Code Block`.
 5. Click `Code Block` to insert in Post.
 
-Q. How to change Language / Mode of Code Block?
+#### Q. How to change Language / Mode of Code Block?
 A. Just select your `Language / Mode` from Select Dropdown.
 
-Q. How to change color Theme of Code Block?
+#### Q. How to change color Theme of Code Block?
 A. Just select your `Theme` from Select Dropdown.
 
-Q. How to enable or disable Line Numbers?
+#### Q. How to enable or disable Line Numbers?
 A. Just click toggle button to (On/Off) it.
 
-Q. How to enable or disable Highlight Active Line?
+#### Q. How to enable or disable Highlight Active Line?
 A. Just click toggle button to (On/Off) it.
 
-Q. How to enable or disable Warp Long Line?
+#### Q. How to enable or disable Warp Long Line?
 A. Just click toggle button to (On/Off) it.
 
-Q. Does this require any knowledge of HTML or CSS?
+#### Q. Does this require any knowledge of HTML or CSS?
 A. Absolutely not. This plugin can be configured with no knowledge of HTML or CSS, using an easy-to-use Block. But you have to know about copy paste code on `CodeMirror Block`, and select proper Language/Mode and Theme.
 
-Q. The last WordPress update is preventing me from editing my website that is using this plugin. Why is this?
+#### Q. The last WordPress update is preventing me from editing my website that is using this plugin. Why is this?
 A. This plugin can not cause such problem. More likely, the problem are related to the settings of the website. It could just be a cache, so please try to clear your website's cache (may be you using a caching plugin, or some web service such as the CloudFlare) and then the cache of your web browser. Also please try to re-login to the website, this too can help.
 
