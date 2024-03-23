@@ -354,8 +354,9 @@ class CodeMirror_Blocks
       $content = $attributes['content'];
       unset($attributes['content']);
     }
+    // NOTE: This is code block and it can not be escaped.
+    // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
     echo $content;
-    // return $content;
     return \ob_get_clean();
   }
 }

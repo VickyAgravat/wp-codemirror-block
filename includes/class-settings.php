@@ -54,7 +54,9 @@ class Settings
     add_action('admin_init', array(__CLASS__, 'setup_sections'));
     add_action('admin_init', array(__CLASS__, 'setup_fields'));
 
-    if (!empty($_REQUEST['page']) && $_REQUEST['page'] == self::$option_page_slug) {
+    /* It is not doing any database update. So, no use of nonces */
+    // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+    if (!empty($_GET['page']) && $_GET['page'] == self::$option_page_slug) {
       add_action('admin_print_scripts', array(__CLASS__, 'style'));
       add_action('admin_footer_text', array(__CLASS__, 'admin_footer_text'));
     }
@@ -96,9 +98,8 @@ class Settings
   public static function plugin_settings_page()
   {
     if (!current_user_can('manage_options')) {
-      wp_die(__('You do not have sufficient permissions to access this page.'));
-    }
-?>
+      wp_die(esc_html(__('You do not have sufficient permissions to access this page.')));
+    } ?>
     <div class="wrap wpcm-options">
       <h1>CodeMirror Blocks Options</h1>
       <?php settings_errors(); ?>
@@ -116,8 +117,7 @@ class Settings
         <div class="wpcm-support">
           <h2>Support CodeMirror Blocks</h2>
           <h3>Rate</h3>
-          <?php
-          echo self::admin_footer_text('') ?>
+          <p>If you like <strong>CodeMirror Block</strong> please leave us a <a href="https://wordpress.org/support/plugin/wp-codemirror-block/reviews?rate=5#new-post" target="_blank" class="wc-rating-link" aria-label="five star" data-rated="Thanks :)">★★★★★</a> rating. A huge thanks in advance!</p>
           <h3>Any Questions?</h3>
           <p><a href="https://wordpress.org/support/plugin/wp-codemirror-block/" target="_blank">Ask on support forum</a> You can also ask us to add new feature!</p>
           <h3>Donate</h3>
@@ -233,28 +233,6 @@ class Settings
         'description' => 'Editable on Frontend?',
         'default' => 'yes'
       ),
-      // array(
-      // 	'label' => 'Enable Execution Button?',
-      // 	'id' => 'button',
-      //  'type' => 'radio',
-      //  'options' => array(
-      //     'no' => 'No',
-      //     'yes' => 'Yes',
-      //  ),
-      // 	'section' => 'output',
-      //  'description' => 'It will display Execute Button after Code Block on Front End (Only for HTML, CSS and JS mode type) if "Editable on front end" is enabled, for that block.',
-      //  'default' => 'no'
-      // ),
-      // array(
-      // 	'label' => 'Button Text',
-      // 	'id' => 'button_text',
-      //  'type' => 'input',
-      //  'class' => 'regular-text',
-      // 	'section' => 'output',
-      //  'description' => 'Text on Execute Button.',
-      //  'placeholder' => 'Execute, Run',
-      //  'default' => 'Execute'
-      // ),
       array(
         'label' => 'Enable Code Block on Home Page?',
         'id' => 'enableOnHome',
@@ -279,7 +257,6 @@ class Settings
         'description' => 'It will display Control Panel on top of the Code Block on front end.',
         'default' => 'yes'
       ),
-
       array(
         'label' => 'Language Label',
         'id' => 'languageLabel',
@@ -290,23 +267,10 @@ class Settings
           ['value' => 'language', 'label' => 'Language Name'],
           ['value' => 'file', 'label' => 'File Name'],
         ),
-
         'section' => 'panel',
         'description' => 'It will display Language label on Control Panel.',
         'default' => 'language'
       ),
-      // array(
-      // 	'label' => 'Enable Execute Button?',
-      // 	'id' => 'runButton',
-      //   'type' => 'radio',
-      //   'options' => array(
-      //     'no' => 'No',
-      //     'yes' => 'Yes',
-      //   ),
-      //   'section' => 'panel',
-      //   'description' => 'It will display Execute Button on Control panel. It will only display on HTML, CSS or JS type blocks.',
-      //   'default' => 'yes'
-      // ),
       array(
         'label' => 'Enable Full Screen Button?',
         'id' => 'fullScreenButton',
@@ -343,7 +307,6 @@ class Settings
         'description' => 'It will display fixed (400px height) code',
         'default' => 'no'
       ),
-
     );
     foreach ($fields as &$field) {
       $field['id'] = self::$option_prefix . $field['section'] . '_' . $field['id'];
@@ -427,8 +390,6 @@ class Settings
   public static function render_field($field)
   {
     $id = $field['id'];
-    $default = !empty($field['default']) ? $field['default'] : '';
-    $class = !empty($field['class']) ? $field['class'] : '';
     $value = get_option($id);
 
     switch ($field['type']) {
@@ -443,8 +404,11 @@ class Settings
             ]
           ];
         }
-
-        $options_markup = '';
+        printf(
+          '<select name="%1$s" id="%1$s" placeholder="%2$s">',
+          esc_attr($id),
+          esc_attr($field['placeholder'])
+        );
         foreach ($options as $key => $option) {
           $label = !empty($option['label']) ? $option['label'] : ucfirst($option['value']);
           $current_value = !empty($option['value']) ? $option['value'] : $key;
@@ -453,70 +417,72 @@ class Settings
             $current_value .= ',' . $option['mime'];
           }
           $selected = !empty($value) && $value == $current_value ? 'selected' : '';
-          $options_markup .= sprintf('<option value="%1$s"%4$s%3$s>%2$s</option>', $current_value, $label, $selected, $data);
+          printf(
+            '<option value="%1$s"%4$s%3$s>%2$s</option>',
+            esc_attr($current_value),
+            esc_attr($label),
+            esc_attr($selected),
+            esc_attr($data)
+          );
         }
-        printf(
-          '<select name="%1$s" id="%1$s" placeholder="%2$s">%3$s</select>',
-          $id,
-          $field['placeholder'],
-          $options_markup
-        );
-        break;
-      case 'textarea':
-        printf(
-          '<textarea name="%1$s" id="%1$s" placeholder="%2$s" rows="5" cols="50">%3$s</textarea>',
-          $id,
-          $field['placeholder'],
-          $value
-        );
-        break;
-      case 'number':
-        printf(
-          '<input name="%1$s" id="%1$s" type="%2$s" placeholder="%3$s" value="%4$s" min="%5$s" max="%6$s" step="%7$s" autocomplete="off" />',
-          $id,
-          $field['type'],
-          $field['placeholder'],
-          $value,
-          $field['min'],
-          $field['max'],
-          $field['step']
-        );
+        printf('</select>');
         break;
       case 'radio':
       case 'checkbox':
         if (!empty($field['options']) && is_array($field['options'])) {
-          $options_markup = '';
           $iterator = 0;
+          printf('<fieldset>');
           foreach ($field['options'] as $key => $label) {
             $iterator++;
-            $options_markup .= sprintf(
+            printf(
               '<label for="%1$s_%6$s"><input id="%1$s_%6$s" name="%1$s" type="%2$s" value="%3$s" %4$s />%5$s</label>',
-              $id,
-              $field['type'],
-              $key,
+              esc_attr($id),
+              esc_attr($field['type']),
+              esc_attr($key),
               checked($value, $key, false),
-              $label,
-              $iterator
+              esc_attr($label),
+              esc_attr($iterator)
             );
           }
-          printf(
-            '<fieldset>%s</fieldset>',
-            $options_markup
-          );
+          printf('</fieldset>');
         }
+        break;
+      case 'textarea':
+        $field['rows'] = !empty($field['rows']) ? $field['rows'] : 3;
+        printf(
+          '<textarea name="%1$s" id="%1$s" placeholder="%2$s" rows="%3$s">%4$s</textarea>',
+          esc_attr($id),
+          esc_attr($field['placeholder']),
+          esc_attr($field['rows']),
+          esc_textarea($value)
+        );
+        break;
+      case 'number':
+        $field['min'] = !empty($field['min']) ? $field['min'] : 0;
+        $field['max'] = !empty($field['max']) ? $field['max'] : 100;
+        $field['step'] = !empty($field['step']) ? $field['step'] : 1;
+        printf(
+          '<input name="%1$s" id="%1$s" type="%2$s" placeholder="%3$s" value="%4$s" min="%5$s" max="%6$s" step="%7$s" autocomplete="off" />',
+          esc_attr($id),
+          esc_attr($field['type']),
+          esc_attr($field['placeholder']),
+          esc_attr($value),
+          esc_attr($field['min']),
+          esc_attr($field['max']),
+          esc_attr($field['step']),
+        );
         break;
       default:
         printf(
-          '<input name="%1$s" id="%1$s" type="%2$s" placeholder="%3$s" value="%4$s" class="%5$s" />',
-          $id,
-          $field['type'],
-          $field['placeholder'],
-          $value,
-          $class
+          '<input name="%1$s" id="%1$s" type="%2$s" placeholder="%3$s" value="%4$s" />',
+          esc_attr($id),
+          esc_attr($field['type']),
+          esc_attr($field['placeholder']),
+          esc_attr($value),
         );
     }
     if ($desc = $field['description']) {
-      printf('<p class="description">%s </p>', $desc);
+      printf('<p class="description">%s </p>', esc_html($desc));
     }
   }
 
@@ -538,6 +504,10 @@ class Settings
       .wpcm-support {
         background-color: #fff;
         padding: 1em;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 30px;
+        height: 100vh;
       }
 
       .wpcm-support p {
@@ -556,9 +526,11 @@ class Settings
       }
 
       .wpcm input[type='text'],
+      .wpcm input[type='number'],
       .wpcm select,
       .wpcm textarea {
         width: 100%;
+        max-width: 25rem;
       }
 
       .wpcm fieldset label {

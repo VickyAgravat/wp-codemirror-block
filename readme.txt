@@ -1,14 +1,15 @@
 === CodeMirror Blocks ===
 Contributors: vickyagravat
-Tags: syntax highlighter, code block, codemirror, gutenberg, editor, php, html, css, javascript, python, java, jsx, react, vue, go, snippet, highlight, syntax highlighting
-Requires at least: 6.0
 Donate link: https://paypal.me/VikeshAgravat
+Tags: syntax highlighter, codemirror, gutenberg, editor
+Requires at least: 6.0
 Tested up to: 6.4
 Stable tag: 2.0.0
+Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-CodeMirror Blocks is useful for developers blog, tutorial site where display formatted (highlighted) code of any program. With support of 100+ Language/Mode, with 56 Different Color Themes.
+CodeMirror Blocks is useful for tutorial site where display formatted (highlighted) code block. With support of 100+ Language/Mode and 56 Themes.
 
 == Description ==
 
@@ -256,10 +257,10 @@ A. This plugin can not cause such problem. More likely, the problem are related 
 
 == Upgrade Notice ==
 
-= 1.1.0 =
-Added New Features Included.
-
 = 2.0.0 =
 * Fix Cross-Site Scripting issue.
 * Code Execution functionality removed.
 * jQuery Dependency removed. Now, it is written in pure JavaScript.
+
+= 1.1.0 =
+Added New Features Included.
