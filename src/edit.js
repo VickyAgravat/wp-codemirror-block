@@ -37,7 +37,6 @@ import "./editor.scss";
 
 import { modes } from "./codemirror/modes";
 
-// import CodeMirrorEditor from '@uiw/react-codemirror';
 // import CodeMirrorEditor from './CodeMirrorEditor-wp';
 // import CodeMirrorEditor from './codemirror/CodeMirrorEditor-react'
 import CodeMirrorEditor from "./codemirror/CodeMirrorEditor";

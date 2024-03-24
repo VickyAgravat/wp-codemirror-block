@@ -27,8 +27,6 @@ import {
 	ComboboxControl,
 } from '@wordpress/components';
 
-// import CodeMirrorEditor from '@uiw/react-codemirror';
-
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
  * Those files can contain any CSS code that gets applied to the editor.

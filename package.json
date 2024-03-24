@@ -22,20 +22,16 @@
 		"test:unit": "wp-scripts test-unit-js"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^27.4.0"
+		"@wordpress/scripts": "^27.5.0"
 	},
 	"files": [
-		"public/**",
 		"build/**",
 		"includes/**",
 		"tinymce/**",
 		"changelog.*",
-		"*.php",
+		"index.php",
 		"license.*",
 		"readme.*",
-    "vendor/**"
-	],
-	"dependencies": {
-		"@uiw/react-codemirror": "^4.21.24"
-	}
+		"vendor/**"
+	]
 }
