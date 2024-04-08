@@ -1,3 +1,9 @@
+= 2.0.2 =
+* Fix: [Everything is duplicated](https://wordpress.org/support/topic/everything-is-duplicated) code block rendered twice bug.
+
+= 2.0.1 =
+* Fix: Minor bug
+
 = 2.0.0 =
 * Fix: Cross-Site Scripting issue. See it on [GitHub Advisory](https://github.com/advisories/GHSA-f949-cfvp-v3rg) or [Wordfence report](https://www.wordfence.com/threat-intel/vulnerabilities/id/52569aac-1e9e-40fb-9ff4-5eeb7940375d?source=cve)
 * Removed: Due to Cross-Site Scripting issue, Code Execution functionality (beta functionality) removed.

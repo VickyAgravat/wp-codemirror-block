@@ -147,7 +147,7 @@ class CodeMirror_Blocks
     );
 
     $view_assets = require plugin_dir_path(CODEMIRROR_BLOCKS_PLUGIN) . '/build/view.asset.php';
-    wp_enqueue_script(
+    wp_register_script(
       'codemirror-view',
       plugin_dir_url(CODEMIRROR_BLOCKS_PLUGIN) . 'build/view.js',
       array_merge($view_assets['dependencies'], array('codemirror-autoload')),  // Merge Dependencies, defined above.
@@ -195,8 +195,6 @@ class CodeMirror_Blocks
       // if content is empty just simply return. no needs to enqueue anything.
       return;
     }
-
-    $suffix = self::$suffix;
 
     $regex = "#wp-block-codemirror-blocks#";
     preg_match($regex, $content->post_content, $matches);
