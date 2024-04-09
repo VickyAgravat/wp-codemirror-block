@@ -4,7 +4,7 @@ Donate link: https://paypal.me/VikeshAgravat
 Tags: syntax highlighter, codemirror, gutenberg, editor
 Requires at least: 6.0
 Tested up to: 6.5
-Stable tag: 2.0.2
+Stable tag: 2.0.3
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -172,6 +172,10 @@ A. This plugin can not cause such problem. More likely, the problem are related 
 * This Plugin use CodeMirror library to highlight `Code Blocks`. [CodeMirror](https://codemirror.net/) is an open-source project shared under the [MIT license](https://codemirror.net/LICENSE).
 
 == Changelog ==
+
+= 2.0.3 =
+* Fix: [Adding ADDITIONAL CSS CLASS(ES) breaks the code](https://wordpress.org/support/topic/adding-additional-css-classes-breaks-the-code/)
+* Fix: Extra line at the end of the code.
 
 = 2.0.2 =
 * Fix: [Everything is duplicated](https://wordpress.org/support/topic/everything-is-duplicated) code block rendered twice bug.

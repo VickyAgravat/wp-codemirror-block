@@ -311,9 +311,12 @@ class CodeMirror_Blocks
   {
 
     $editor_option = Settings::get_options();
-
-    \ob_start();
+    // \ob_start();
+    // echo '<pre>';
+    // print_r($block);
+    // echo '</pre><br />';
     // echo '<pre>'.\json_encode($editor_option, JSON_PRETTY_PRINT ).'</pre><br />';
+    $block_class = '';
     $attributes = wp_parse_args($attributes, $editor_option['editor']);
     $attributes = wp_parse_args($attributes, $editor_option['panel']);
     // echo '<pre>'.\json_encode($block, JSON_PRETTY_PRINT ).'</pre><br />';
@@ -342,27 +345,16 @@ class CodeMirror_Blocks
 
       if (!empty($is_new_block)) {
         // add class and data attribute.
-        $content = \str_ireplace('<div class="wp-block-codemirror-blocks-code-block code-block"><pre>', '', $content);
-        $content = \str_ireplace('</pre></div>', '', $content);
+        $content = \str_ireplace('<pre', '<pre class="CodeMirror" data-setting="%1$s"', $content);
       } else {
         // for backward compatibility.
-        $content = \str_ireplace('<div class="wp-block-codemirror-blocks-code-block code-block">', '', $content);
-        $content = \str_ireplace('</div>', '', $content);
         $content = preg_replace('/ data-setting="[\s\S]*?"/', ' data-setting="%1$s"', $content);
       }
-      // $content = sprintf($content, esc_attr(wp_json_encode($attributes, JSON_UNESCAPED_SLASHES)));
+      $content = sprintf($content, esc_attr(wp_json_encode($attributes, JSON_UNESCAPED_SLASHES)));
     } else if (!empty($attributes['content'])) {
       $content = $attributes['content'];
       unset($attributes['content']);
     }
-    echo '<div class="wp-block-codemirror-blocks-code-block code-block">';
-    printf(
-      '<pre class="CodeMirror" data-setting="%s">',
-      esc_attr(wp_json_encode($attributes, JSON_UNESCAPED_SLASHES)),
-    );
-    printf('%s', esc_html($content));
-    echo '</pre>';
-    echo '</div>';
-    return \ob_get_clean();
+    return $content;
   }
 }
