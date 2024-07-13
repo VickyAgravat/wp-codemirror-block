@@ -5,8 +5,8 @@
  * Plugin URI:			  https://wordpress.org/plugins/wp-codemirror-block/
  * Description:				It provides Code Block. it can be use as (syntax highlighter) built with CodeMirror library, it is use full for developers or tutorials blog to display highlighted code, with Web Editor.
  * Requires at least: 6.0
- * Requires PHP:      7.0
- * Version:						2.0.3
+ * Requires PHP:      7.3
+ * Version:						2.0.4
  * Author:      			Vicky Agravat
  * Author URI:  			https://profiles.wordpress.org/vickyagravat
  * License:     			GPL-2.0-or-later

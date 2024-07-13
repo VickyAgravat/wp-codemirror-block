@@ -1,3 +1,10 @@
+= 2.0.4 =
+* Fix: 🐞 In editor panelOptions is undefined
+
+= 2.0.3 =
+* Fix: Adding ADDITIONAL CSS CLASS(ES) breaks the code
+* Fix: Extra line at the end of the code.
+
 = 2.0.2 =
 * Fix: [Everything is duplicated](https://wordpress.org/support/topic/everything-is-duplicated) code block rendered twice bug.
 

@@ -115,7 +115,7 @@ class CodeMirror_Blocks
      * @see https://developer.wordpress.org/reference/functions/register_block_type/
      */
     register_block_type(CODEMIRROR_BLOCKS_PLUGIN_DIR . '/build', array(
-      'editor_script' => 'codemirror-blocks-editor',
+      'editor_script' => 'codemirror-blocks-code-block-editor-script',
       'script' => 'codemirror-autoload',
       'view_script' => 'codemirror-view',
       'render_callback' => array($this, 'render_code_block')
@@ -139,7 +139,7 @@ class CodeMirror_Blocks
 
     $index_assets = require plugin_dir_path(CODEMIRROR_BLOCKS_PLUGIN) . '/build/index.asset.php';
     wp_register_script(
-      'codemirror-blocks-editor',
+      'codemirror-blocks-code-block-editor-script',
       plugins_url('/build/index.js',  CODEMIRROR_BLOCKS_PLUGIN),
       array_merge($index_assets['dependencies'], array('codemirror-autoload')),  // Merge Dependencies, defined above.
       $index_assets['version'],
@@ -169,7 +169,7 @@ class CodeMirror_Blocks
 
     wp_add_inline_script('codemirror-autoload', self::inline_script('admin'), 'before');
 
-    wp_enqueue_script('codemirror-blocks-editor');
+    wp_enqueue_script('codemirror-blocks-code-block-editor-script');
   }
 
   /**
